@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1028663621883",
+    "project_id": "loginfirebaseapp-dcc5d",
+    "storage_bucket": "loginfirebaseapp-dcc5d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028663621883:android:5197bcb16582e35984185e",
+        "android_client_info": {
+          "package_name": "com.example.loginaplicacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7gAYJTxAg7ecVeub8vF9A2NQs3rYuBUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

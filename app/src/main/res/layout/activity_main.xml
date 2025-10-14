@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="#ECECEC">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:hint="Correo electrónico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:boxStrokeColor="@color/stroke_color_rojo"
+        app:hintTextColor="@color/stroke_color_rojo">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Contraseña"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_marginHorizontal="20dp"
+            app:boxStrokeColor="@color/stroke_color_rojo"
+            app:hintTextColor="@color/stroke_color_rojo"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:importantForAutofill="no"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginBtn" style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="Iniciar Sesión"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+            app:strokeColor="@color/stroke_color_rojo"
+            android:textColor="@color/stroke_color_rojo"
+            app:rippleColor="@color/ripple_rojo"
+        />
+
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerBtn"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="Registrar Usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="40dp"
+            app:strokeColor="@color/stroke_color_rojo"
+            android:textColor="@color/stroke_color_rojo"
+            app:rippleColor="@color/ripple_rojo"/>
+
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

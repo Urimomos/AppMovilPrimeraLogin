@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="#ECECEC">
+
+        <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/userInfo"
+                android:text="Bienvenido"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/label_fondo"/>
+
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logoutBtn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="Cerrar Sesión"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="40dp"
+                app:strokeColor="@color/stroke_color_rojo"
+                android:textColor="@color/stroke_color_rojo"
+                app:rippleColor="@color/ripple_rojo"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
