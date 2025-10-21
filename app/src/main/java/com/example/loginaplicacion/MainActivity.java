@@ -1,8 +1,13 @@
 package com.example.loginaplicacion;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import android.content.Intent;
+import android.graphics.Insets;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,8 +18,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
 
+public class MainActivity extends AppCompatActivity {
     private EditText emailField, passwordField;
     private Button loginBtn, registerBtn;
     private FirebaseAuth auth;
@@ -78,6 +83,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(this, "Error al iniciar sesión: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                });
-    }
+           });
+}
 }
