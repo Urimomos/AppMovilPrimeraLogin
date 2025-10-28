@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginaplicacion.models.Usuario;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity{
     private EditText nameField, telefonoField;
-    private Button registrarBtn;
+    private Button registrarBtn, logoutBtn;
+    private TextView userInfo;
     private FirebaseAuth auth;
     private DatabaseReference usuarioRef;
 
@@ -32,8 +34,21 @@ public class HomeActivity extends AppCompatActivity{
         nameField = findViewById(R.id.nameField);
         telefonoField = findViewById(R.id.phoneField);
         registrarBtn = findViewById(R.id.registrarBtn);
+        userInfo = findViewById(R.id.userInfo);
+        logoutBtn = findViewById(R.id.logoutBtn);
 
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            userInfo.setText("Bienvenido, " + user.getEmail());
+        }
+        
         registrarBtn.setOnClickListener(v -> registrarUsuario());
+
+        logoutBtn.setOnClickListener(v -> {
+            auth.signOut();
+            finish();
+        });
+
     }
 
     private void registrarUsuario() {
