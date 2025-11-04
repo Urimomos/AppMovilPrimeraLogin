@@ -2,14 +2,14 @@ package com.example.loginaplicacion;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.loginaplicacion.models.Usuario;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeActivity extends AppCompatActivity{
     private EditText nameField, telefonoField;
-    private Button registrarBtn, logoutBtn;
+    private Button registrarBtn, logoutBtn, ledBtn;
     private TextView userInfo;
     private FirebaseAuth auth;
     private DatabaseReference usuarioRef;
@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity{
         registrarBtn = findViewById(R.id.registrarBtn);
         userInfo = findViewById(R.id.userInfo);
         logoutBtn = findViewById(R.id.logoutBtn);
+        ledBtn = findViewById(R.id.ledBtn);
 
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -48,6 +49,9 @@ public class HomeActivity extends AppCompatActivity{
             auth.signOut();
             finish();
         });
+
+        ledBtn.setOnClickListener(v -> abrirLedBotones(LedActivity.class));
+
 
     }
 
@@ -67,5 +71,10 @@ public class HomeActivity extends AppCompatActivity{
                 )
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Error en el registro:" + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    private void abrirLedBotones(Class<?> activity) {
+        Intent intent = new Intent(HomeActivity.this, activity);
+        startActivity(intent);
     }
 }

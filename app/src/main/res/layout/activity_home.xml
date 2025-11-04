@@ -95,4 +95,20 @@
                 />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ledBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="Botones del led"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        app:strokeColor="@color/stroke_color_rojo"
+        android:textColor="@color/stroke_color_rojo"
+        app:rippleColor="@color/ripple_rojo"
+        android:layout_marginBottom="10dp"
+        />
+
 </LinearLayout>

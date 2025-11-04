@@ -1,0 +1,66 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="#ECECEC">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        >
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/luz_indicadora" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOn" style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Encender LED"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            app:strokeColor="@color/stroke_color_rojo"
+            android:textColor="@color/stroke_color_rojo"
+            app:rippleColor="@color/ripple_rojo"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOff" style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="Apagar LED"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="40dp"
+            app:strokeColor="@color/stroke_color_rojo"
+            android:textColor="@color/stroke_color_rojo"
+            app:rippleColor="@color/ripple_rojo"
+            />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
