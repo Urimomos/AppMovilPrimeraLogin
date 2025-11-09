@@ -1,5 +1,6 @@
 package com.example.loginaplicacion;
 
+import android.widget.ImageView;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.activity.EdgeToEdge;
@@ -18,6 +19,7 @@ public class LedActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private Button btnOn, btnOff;
+    private ImageView ivLedIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class LedActivity extends AppCompatActivity {
 
         btnOn = findViewById(R.id.btnOn);
         btnOff = findViewById(R.id.btnOff);
+        ivLedIcon = findViewById(R.id.ivLedIcon);
 
         // 1. Obtenemos la referencia al nodo "led"
         mDatabase = FirebaseDatabase.getInstance().getReference("led");
@@ -57,15 +60,18 @@ public class LedActivity extends AppCompatActivity {
                         // Si es "ON", deshabilita "Encender" y habilita "Apagar"
                         btnOn.setEnabled(false);
                         btnOff.setEnabled(true);
+                        ivLedIcon.setImageResource(R.drawable.luz_indicadora_on);
                     } else {
                         // Cualquier otro valor ("OFF", null, 1, 0, etc.) se trata como apagado
                         btnOn.setEnabled(true);
                         btnOff.setEnabled(false);
+                        ivLedIcon.setImageResource(R.drawable.luz_indicadora);
                     }
                 } else {
                     // Si el nodo "led" no existe, lo tratamos como "apagado"
                     btnOn.setEnabled(true);
                     btnOff.setEnabled(false);
+                    ivLedIcon.setImageResource(R.drawable.luz_indicadora);
                 }
             }
 

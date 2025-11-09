@@ -25,7 +25,8 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:layout_marginHorizontal="20dp"
-                android:background="@drawable/label_fondo"/>
+                android:background="@drawable/label_fondo"
+                android:textColor="@color/white"/>
 
 
             <com.google.android.material.textfield.TextInputLayout

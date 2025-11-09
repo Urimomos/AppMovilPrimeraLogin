@@ -12,8 +12,11 @@ import android.widget.Toast;
 import com.example.loginaplicacion.models.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class HomeActivity extends AppCompatActivity{
@@ -40,7 +43,7 @@ public class HomeActivity extends AppCompatActivity{
 
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
-            userInfo.setText("Bienvenido, " + user.getEmail());
+            loadAndDisplayUserData(user.getUid());
         }
         
         registrarBtn.setOnClickListener(v -> registrarUsuario());
@@ -66,9 +69,13 @@ public class HomeActivity extends AppCompatActivity{
         }
         Usuario nuevoUsuario = new Usuario(id, nombre, telefono, correo);
         usuarioRef.child("usuarios").child(id).setValue(nuevoUsuario)
-                .addOnSuccessListener(aVoid ->
-                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                )
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                    String infoCompleta = "Bienvenido, " + nombre + "\n" +
+                            "Email: " + correo + "\n" +
+                            "Teléfono: " + telefono;
+                    userInfo.setText(infoCompleta);
+                })
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Error en el registro:" + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
@@ -76,5 +83,38 @@ public class HomeActivity extends AppCompatActivity{
     private void abrirLedBotones(Class<?> activity) {
         Intent intent = new Intent(HomeActivity.this, activity);
         startActivity(intent);
+    }
+
+    private void loadAndDisplayUserData(String userId) {
+        // Apuntamos directamente a la referencia de ESE usuario
+        DatabaseReference currentUserRef = usuarioRef.child("usuarios").child(userId);
+
+        // addValueEventListener se mantiene escuchando cambios en tiempo real
+        currentUserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    // El usuario ya tiene datos guardados, los cargamos
+                    Usuario usuario = snapshot.getValue(Usuario.class);
+                    if (usuario != null) {
+                        String info = "Bienvenido, " + usuario.getNombre() + "\n" +
+                                "Email: " + usuario.getCorreo() + "\n" +
+                                "Teléfono: " + usuario.getTelefono();
+                        userInfo.setText(info);
+                    }
+                } else {
+                    // El usuario está autenticado pero no ha completado el registro
+                    FirebaseUser user = auth.getCurrentUser();
+                    if (user != null) {
+                        userInfo.setText("Bienvenido, " + user.getEmail() + "\n(Completa tu registro)");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Toast.makeText(HomeActivity.this, "Error al cargar datos", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
